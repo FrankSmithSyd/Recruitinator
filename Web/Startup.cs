@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Infrastructure;
+using Infrastructure.API;
+using Infrastructure.Clients;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
@@ -12,6 +15,7 @@ using Web.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Web.Services;
 
 namespace Web
 {
@@ -34,6 +38,26 @@ namespace Web
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+            LazyLoadScopedDataSources(services);
+            LazyLoadScopedRepositories(services);
+            LazyLoadScopedServices(services);
+        }
+
+        private void LazyLoadScopedDataSources(IServiceCollection services)
+        {
+            services.AddScoped<IApiClient, JobAdder>();
+        }
+
+        private static void LazyLoadScopedRepositories(IServiceCollection services)
+        {
+            services.AddScoped<IRepository, ApiRepository>();
+        }
+
+        private static void LazyLoadScopedServices(IServiceCollection services)
+        {
+            services.AddScoped<IJobService, JobService>();
+            services.AddScoped<ICandidateService, CandidateService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
