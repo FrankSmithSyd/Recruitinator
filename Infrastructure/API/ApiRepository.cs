@@ -20,7 +20,7 @@ namespace Infrastructure
         public ApiRepository(IApiClient api)
         {
             _api = api ?? new JobAdder();    // TODO FRANK: remove this null coalescer, we ALWAYS want to inject it in Startup.cs. Also don't want to directly specifiy JobAdder API here.
-            _restClient = new RestClient(_api.clientUri);
+            _restClient = new RestClient(_api.ClientUri);
         }
         
         public IEnumerable<Candidate> GetCandidates()

@@ -21,10 +21,6 @@ namespace Web.Controllers
 
         public IActionResult Index()
         {
-            // var getApiDataFromCore = Infrastructure.JobAdderConsumer.GetCandidates();
-            var jas = new ApiRepository(null);    // TODO FRANK: this sucks. We should NOT be instantiating a repository from the controller. Move this to Startup. 
-
-            jas.GetCandidates();
             return View();
         }
 

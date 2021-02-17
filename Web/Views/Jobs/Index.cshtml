@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Core.Entities.Job>
+
+@{
+    ViewData["Title"] = "Jobs";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Jobs</h1>
+    <p>Here are some jobs.</p>
+    
+    <div>
+        @{
+            foreach (var job in Model)
+            {
+                <p>@job.Name</p>
+            }
+        }
+    </div>
+    
+</div>
