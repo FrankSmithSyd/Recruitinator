@@ -3,7 +3,7 @@ using Core.Entities;
 
 namespace Infrastructure
 {
-    public interface IClientApiConsumer
+    public interface IRepository
     {
         public IEnumerable<Candidate> GetCandidates();
         public IEnumerable<Job> GetJobs();
