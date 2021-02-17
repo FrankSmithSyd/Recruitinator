@@ -10,7 +10,7 @@ using RestSharp;
 
 namespace Infrastructure
 {
-    public class JobAdderConsumer
+    public class JobAdderConsumer : IApiConsumer
     {
         private IRestClient _clientApi;
 
@@ -19,6 +19,7 @@ namespace Infrastructure
             // _clientApi = restClient;    // TODO FRANK: Abstract and Inject this better. Currently Too tightly coupled to the API
             _clientApi = restClient ?? new RestClient("http://private-76432-jobadder1.apiary-mock.com/");
         }
+        
         public IEnumerable<Candidate> GetCandidates()
         {
             var request = new RestRequest("candidates", Method.GET);
@@ -31,10 +32,9 @@ namespace Infrastructure
             return candidates;
         }
 
-        // public static void GetJobs()
-        // {
-        //     string baseUri = "https://jobadder1.docs.apiary.io/#reference/0/candidate-collection/list-all-jobs/";            
-        // }
-        
+        public IEnumerable<Job> GetJobs()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
