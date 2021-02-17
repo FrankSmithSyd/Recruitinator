@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Web.Models;
@@ -20,6 +21,10 @@ namespace Web.Controllers
 
         public IActionResult Index()
         {
+            // var getApiDataFromCore = Infrastructure.JobAdderConsumer.GetCandidates();
+            var jas = new JobAdderConsumer(null);    // TODO FRANK: this sucks.    
+
+            jas.GetCandidates();
             return View();
         }
 
