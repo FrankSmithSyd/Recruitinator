@@ -22,7 +22,7 @@ namespace Web.Controllers
         public IActionResult Index()
         {
             // var getApiDataFromCore = Infrastructure.JobAdderConsumer.GetCandidates();
-            var jas = new JobAdderConsumer(null);    // TODO FRANK: this sucks.    
+            var jas = new ClientApiConsumer(null);    // TODO FRANK: this sucks.    
 
             jas.GetCandidates();
             return View();

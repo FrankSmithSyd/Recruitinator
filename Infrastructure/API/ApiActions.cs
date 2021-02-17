@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using Core.Entities;
 
-namespace Infrastructure
+namespace Infrastructure.API
 {
-    public interface IApiConsumer
+    public interface ApiActions
     {
         public abstract IEnumerable<Candidate> GetCandidates();
         public abstract IEnumerable<Job> GetJobs();
