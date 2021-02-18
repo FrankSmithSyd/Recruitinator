@@ -24,7 +24,15 @@ namespace Core.Logic
             return matchingSkills.ToList();
         }
 
+        public static ICollection<Candidate> GetCandidatesMatchingAnySkills(IList<Candidate> candidates, IList<SkillTag> applicableSkills)
+        {
+            var matchingCandidates = new List<Candidate>();    // TODO FRANK: there's DEFINATELY a faster way to do this than a O(n^2) loop on all skills with linq and some smart joining, but running out of time. 
             
+            foreach(var skill in applicableSkills)
+                matchingCandidates.AddRange(GetCandidatesMatchingSkill(skill, candidates));
+
+            return matchingCandidates;
+        } 
         
     }
 }
