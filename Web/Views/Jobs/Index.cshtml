@@ -9,15 +9,7 @@
     <p>Here are some jobs.</p>
     
     <div>
-        @{
-            foreach (var job in Model)
-            {
-                <p>@job.Id</p>
-                <p>@job.Name</p>
-                <p>@job.Company.Name</p>
-                <p>@job.GetAllSkillsAsCommaSeparatedString()</p>
-            }
-        }
+        @await Html.PartialAsync("_JobTable.cshtml")
     </div>
     
 </div>

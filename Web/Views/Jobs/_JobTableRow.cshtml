@@ -1,0 +1,8 @@
+﻿@model Core.Entities.Job
+
+<tr>
+    <td>@Model.Id</td>
+    <td>@Model.Name</td>
+    <td>@Model.Company.Name</td>
+    <td>@Model.GetAllSkillsAsCommaSeparatedString()</td>
+</tr>
