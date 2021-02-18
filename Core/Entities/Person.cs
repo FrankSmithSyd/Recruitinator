@@ -16,6 +16,13 @@ namespace Core.Entities
             SkillTags = skillTags.Split(',').Select(x => new SkillTag(x));
         }
         
+        protected Person(int id, string name, IEnumerable<SkillTag> skillTags)
+        {
+            Id = id;
+            Name = name;
+            SkillTags = skillTags;
+        }
+        
         public string GetAllSkillsAsCommaSeparatedString()
         {
             var skillTagNames = SkillTags.Select(x => x.Name);
