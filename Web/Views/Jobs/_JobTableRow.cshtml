@@ -2,7 +2,9 @@
 
 <tr>
     <td>@Model.Id</td>
-    <td>@Model.Name</td>
+    <td>
+        <a asp-action="Details" asp-route-id="@Model.Id">@Model.Name</a>
+    </td>
     <td>@Model.Company.Name</td>
     <td>@Model.GetAllSkillsAsCommaSeparatedString()</td>
 </tr>
