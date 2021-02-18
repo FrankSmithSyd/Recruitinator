@@ -1,0 +1,15 @@
+﻿@model IEnumerable<Core.Entities.Candidate>
+
+@{
+    ViewData["Title"] = "Candidates";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Candidates</h1>
+    <p>Here are some candidates available for recruitment.</p>
+    
+    <div>
+        @await Html.PartialAsync("_CandidatesTable.cshtml")
+    </div>
+    
+</div>

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Core.Entities.Candidate>
+
+<table>
+    <thead>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Id)</th>
+        <th>@Html.DisplayNameFor(model => model.Name)</th>
+        <th>@Html.DisplayNameFor(model => model.SkillTags)</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var candidate in Model)
+        {
+            @await Html.PartialAsync("_CandidateTableRow.cshtml", candidate)
+        }
+    </tbody>
+</table>
