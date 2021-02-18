@@ -2,7 +2,7 @@
 {
     public class Candidate : Person
     {
-        public Candidate(int id, string name, string skillTags) : base(id, name, skillTags)
+        public Candidate(int candidateId, string name, string skillTags) : base(candidateId, name, skillTags)
         {
         }
     }
