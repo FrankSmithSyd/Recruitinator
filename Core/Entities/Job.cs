@@ -10,9 +10,9 @@ namespace Core.Entities
         public Company Company { get; }
         public IEnumerable<SkillTag> RequiredSkills { get; }
         
-        public Job(int id, string name, string company, string skills)
+        public Job(int jobId, string name, string company, string skills)
         {
-            Id = id;
+            Id = jobId;
             Name = name;
             Company = new Company(company);
             RequiredSkills = skills.Split(',').Select(x => new SkillTag(x));
