@@ -4,7 +4,7 @@ using NUnit.Framework;
 
 namespace Core.Tests.SkillMatcher
 {
-    public class GetCandidatesMatchingSkillShould
+    public class GetSkillsMatchingCandidateSkillsShould
     {
         [Test]
         public void MatchCandidateWithApplicableSkill()

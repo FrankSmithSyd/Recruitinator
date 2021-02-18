@@ -12,7 +12,19 @@ namespace Core.Logic
 
             return matchingCandidates;
         }
-        
+
+        public static ICollection<SkillTag> GetSkillsMatchingCandidateSkills(Candidate candidate, IEnumerable<SkillTag> applicableSkills)
+        {
+            var matchingSkills =
+                from candidateSkill in candidate.SkillTags
+                join skill in applicableSkills
+                    on candidateSkill.Name equals skill.Name
+                select skill;
+
+            return matchingSkills.ToList();
+        }
+
+            
         
     }
 }
