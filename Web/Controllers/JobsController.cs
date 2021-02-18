@@ -22,9 +22,16 @@ namespace Web.Controllers
         
         public IActionResult Details(int id)
         {
-            var job = _service.GetAllJobs().FirstOrDefault(x => x.Id == id);
+            var job = _service.GetJob(id);
             
             return View(job);
         }
+
+        // public IActionResult CandidateJobMatches(int jobId)
+        // {
+        //     var candidateJobMatches = _service.GetCandidateJobMatches(jobId);
+        //
+        //     return View(candidateJobMatches);
+        // }
     }
 }
