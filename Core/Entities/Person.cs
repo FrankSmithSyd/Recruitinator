@@ -13,7 +13,7 @@ namespace Core.Entities
         {
             Id = id;
             Name = name;
-            SkillTags = skillTags.Split(',').Select(x => new SkillTag(x));    //TODO: Maybe only get distinct skills, I'm noticing some duplicates in the dataset.
+            SkillTags = skillTags.Split(',').Select(x => new SkillTag(x));
         }
         
         public string GetAllSkillsAsCommaSeparatedString()
