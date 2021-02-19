@@ -1,19 +1,11 @@
 ﻿@model IEnumerable<Core.Entities.Job>
 
 <table>
-    <thead>
-    <tr>
-        <th>@Html.DisplayNameFor(model => model.Id)</th>
-        <th>@Html.DisplayNameFor(model => model.Name)</th>
-        <th>@Html.DisplayNameFor(model => model.Company)</th>
-        <th>@Html.DisplayNameFor(model => model.RequiredSkills)</th>
-        <th>Matching Candidates</th>
-    </tr>
-    </thead>
+    @await Html.PartialAsync("_JobTableHead.cshtml", Model.FirstOrDefault())
     <tbody>
-        @foreach (var job in Model)
-        {
-            @await Html.PartialAsync("_JobTableRow.cshtml", job)
-        }
+    @foreach (var job in Model)
+    {
+        @await Html.PartialAsync("_JobTableRow.cshtml", job)
+    }
     </tbody>
 </table>
