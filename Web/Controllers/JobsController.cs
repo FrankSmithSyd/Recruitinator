@@ -27,11 +27,11 @@ namespace Web.Controllers
             return View(job);
         }
 
-        // public IActionResult CandidateJobMatches(int jobId)
-        // {
-        //     var candidateJobMatches = _service.GetCandidateJobMatches(jobId);
-        //
-        //     return View(candidateJobMatches);
-        // }
+        public IActionResult CandidateJobMatches(int jobId)
+        {
+            var candidateJobMatches = _service.GetCandidateJobMatches(jobId);
+        
+            return View(candidateJobMatches);
+        }
     }
 }

@@ -38,26 +38,31 @@ namespace Core.Logic
         
         public static IEnumerable<CandidateJobStrength> GetJobStrengthForCandidates(Job job, IEnumerable<Candidate> candidates)
         {
-            var candidateStrengths = new List<CandidateJobStrength>();
-
-            foreach (var candidate in candidates)
-                candidateStrengths.Add(CalculateCandidateStrengthForJob(candidate, job));
+            var candidateStrengths = 
+                candidates
+                    .Select(candidate => CalculateCandidateStrengthForJob(candidate, job))
+                    .Where(x => x.Weight > 0)
+                    .OrderByDescending(x => x.Weight)
+                    .ToList();
 
             return candidateStrengths;
         }
         
         public static CandidateJobStrength CalculateCandidateStrengthForJob(Candidate candidate, Job job)
         {
-            var matchingSkills =
+            var matchingTags = 
+            (
                 from candidateSkill in candidate.SkillTags
                 join jobSkill in job.RequiredSkills
-                    on candidateSkill.Name equals jobSkill.Name into matchedSkillTags where matchedSkillTags.Any()
-                select matchedSkillTags.Count();
+                    on candidateSkill.Name equals jobSkill.Name
+                select candidateSkill
+            ).ToList();
 
-            var candidateStrength = new CandidateJobStrength(candidate, job, matchingSkills.Count());
-
-            return candidateStrength;
+            var candidateJobStrength = new CandidateJobStrength(candidate, job, matchingTags.Count(), matchingTags);
+            
+            return candidateJobStrength;
         }
+
 
         
     }

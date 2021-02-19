@@ -1,0 +1,28 @@
+﻿@model Core.Entities.Job
+
+
+<div>
+    <h4>Job:</h4>
+    <hr />
+        
+    <table>
+        <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Id)</th>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Company)</th>CalculateCandidateStrengthForJob
+            <th>@Html.DisplayNameFor(model => model.RequiredSkills)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>@Model.Id</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@Model.Id">@Model.Name</a>
+            </td>
+            <td>@Model.Company.Name</td>
+            <td>@Model.GetAllSkillsAsCommaSeparatedString()</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
