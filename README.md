@@ -17,7 +17,7 @@ Solution Architecture:
 	- The Core Project is the centre of our architectural design, all other projects dependencies should point toward it.
 	- Designed to have few (if any) external dependencies, to allow for as much flexibility as possible.
 	- Includes things like the following:
-		- Entities
+		- Entities (I've implemented encapsulation as much as possible here)
 		- Logic
 - Infastructure 
 	- The Infrastructure project is responsible for mediating between our domain and data mapping layers. We could probably rename project DAL for better clarity.
@@ -34,6 +34,9 @@ Solution Architecture:
 		- Razor
 		- Javascript
 		- Styling: Bootstrap
+- Tests/
+	- Core.Tests
+		- Logic has a few unit tests, not as much as I'd like nor as detailed as I'd like. They're also not utilizing a bunch of the cool features we get from NUnit due to time constraints.
 		
 A bunch of tasks I didn't get around to doing, but would have liked:
 
@@ -53,3 +56,6 @@ A bunch of tasks I didn't get around to doing, but would have liked:
 			- Right now, Our entites are currently a little too tightly coupled to the external system. There are a few cases where I am changing behavior of our backend based on the JobAdder API's implementation (for example, with some entity names and attributes), which is bad. We could solve this by adding some data mapping, but I didn't have time for this.
 			- Data validation completely missing. I like to implement a validation layer sitting either in Core or beside the repository. This would be particularly important in my application since we're relying on external APIs for our data. This could catch some duplicate data cases (for example, some candidates have duplicate skill tags, which we could sanitize and elimintate) as well.
 - CI/CD: Any would be nice.
+- Error logging: Any would be a good step up. In particular since we are reliant upon external APIs, we should be hitting our loggers hard with information regarding our requests in Infastructure.
+- Unit testing: Way more needed, partiuclarly in Core and Infastructure. Web should ideally be so devoid of complex application behaviour it needs little unit testing.
+- Integration testing: Some end to end testing checking application flow from the API all the way to frontend page generation would be nice too and make my imaginary QA ppl very happy.
