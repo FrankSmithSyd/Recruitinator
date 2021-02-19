@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Core.Logic.CandidateJobStrength>
+
+<table>
+    <thead>
+    <tr>
+        <th>Candidate Name</th>
+        <th>Matching Skills</th>
+        <th>Suitability</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var strength in Model)
+    {
+        <tr>
+            <td>@strength.Candidate.Name</td>
+            <td>@strength.GetMatchedSkillsAsCommaSeparatedString()</td>
+            <td>@strength.Weight</td>
+        </tr>
+    }
+    </tbody>
+</table>

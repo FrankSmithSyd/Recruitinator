@@ -7,5 +7,6 @@ namespace Infrastructure
     {
         public IEnumerable<Candidate> GetCandidates();
         public IEnumerable<Job> GetJobs();
+        public Job GetJob(int jobId);
     }
 }

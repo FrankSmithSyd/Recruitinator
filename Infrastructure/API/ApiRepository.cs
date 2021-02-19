@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -37,6 +38,15 @@ namespace Infrastructure
             var jobs = JsonConvert.DeserializeObject<IEnumerable<Job>>(jsonJobs);
             
             return jobs;
+        }
+        
+        // NOTE: Ideally I'd have a direct action to the jobAdder API to get this, but we gotta work within the confines of their system. 
+        public Job GetJob(int jobId)
+        {
+            var jsonJobs = ExecuteExternalApiRequest(_api.GetJobsAction);
+            var jobs = JsonConvert.DeserializeObject<IEnumerable<Job>>(jsonJobs);
+            
+            return GetJobs().FirstOrDefault(x => x.Id == jobId);
         }
 
         private string ExecuteExternalApiRequest(RestRequest request)

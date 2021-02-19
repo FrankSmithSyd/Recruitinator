@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Core.Logic.CandidateJobStrength>
+
+<!--
+ This view right here is EXACTLY why razor can be a sucky frontend implementation. I'd much rather have made this a partial
+ displayed in the Job/Details/ view, and it can make a call back to the controller for the needed data. Instead I have had to 
+ make it as a separate page. I could have made a viewModel, but I don't like them much. I could also have done some AJAX to callback another controller action,
+  or spend a bunch of time refactoring to make it a view component, both of which are a pain.
+ This is a solved problem implemented much more easily in other frontend frameworks. 
+ -->
+  
+<h1>Job suitable candidates</h1>  
+<table>
+    @await Html.PartialAsync("_JobTableHead.cshtml", Model.FirstOrDefault().Job)
+    <tbody>
+        @await Html.PartialAsync("_JobTableRow.cshtml", Model.FirstOrDefault().Job)
+    </tbody>
+</table>
+
+<div>
+    @await Html.PartialAsync("_CandidateJobMatchesTable.cshtml", Model)
+</div>
